@@ -1,8 +1,8 @@
 package com.github.adamzink.springbootmysqldemo.resource;
 
-import com.github.adamzink.springbootmysqldemo.facade.UserFacade;
 import com.github.adamzink.springbootmysqldemo.model.client.User;
 import com.github.adamzink.springbootmysqldemo.model.client.UserRequest;
+import com.github.adamzink.springbootmysqldemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,13 +14,13 @@ import javax.ws.rs.core.MediaType;
 public class UserResource {
 
     @Autowired
-    UserFacade userFacade;
+    UserService userService;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User save(final UserRequest userRequest) {
-        return userFacade.save(userRequest);
+        return userService.save(userRequest);
     }
 
 }
