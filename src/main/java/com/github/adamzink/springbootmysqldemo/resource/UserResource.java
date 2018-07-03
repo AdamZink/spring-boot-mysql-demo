@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Collection;
 
 @Path("/users")
 @Component
@@ -15,6 +16,12 @@ public class UserResource {
 
     @Autowired
     UserService userService;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Collection<User> getAll() {
+        return userService.getAll();
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

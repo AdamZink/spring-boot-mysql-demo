@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Service
@@ -20,6 +21,10 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    public Collection<User> getAll() {
+        return userConverter.modelToResponse(userRepository.findAll());
+    }
 
     public User save(final UserRequest userRequest) {
         UserModel userModel = userConverter.requestToModel(userRequest);
