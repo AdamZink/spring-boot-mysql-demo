@@ -30,5 +30,13 @@ public class UserResource {
         return userService.save(userRequest);
     }
 
+    @PUT
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public User update(@PathParam("id") final Long id, final UserRequest userRequest) {
+        return userService.update(id, userRequest);
+    }
+
 }
 

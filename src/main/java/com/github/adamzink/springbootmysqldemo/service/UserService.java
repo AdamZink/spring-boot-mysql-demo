@@ -34,5 +34,15 @@ public class UserService {
         return userConverter.modelToResponse(userRepository.save(userModel));
     }
 
+    public User update(final Long id, final UserRequest userRequest) {
+        UserModel fromRequest = userConverter.requestToModel(userRequest);
+
+        UserModel toSave = userRepository.getOne(id);
+        toSave.setFirstName(fromRequest.getFirstName());
+        toSave.setLastName(fromRequest.getLastName());
+
+        return userConverter.modelToResponse(userRepository.save(toSave));
+    }
+
 }
 
