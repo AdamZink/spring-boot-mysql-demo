@@ -44,5 +44,9 @@ public class UserService {
         return userConverter.modelToResponse(userRepository.save(toSave));
     }
 
+    public void delete(final Long id) {
+        userRepository.deleteById(id);
+    }
+
 }
 
