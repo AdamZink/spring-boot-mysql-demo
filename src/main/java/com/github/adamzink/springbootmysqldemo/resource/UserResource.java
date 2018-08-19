@@ -21,6 +21,9 @@ public class UserResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "Get all Users",
+            response = User.class,
+            responseContainer = "List")
     public Collection<User> getAll() {
         return userService.getAll();
     }
