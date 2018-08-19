@@ -3,6 +3,7 @@ package com.github.adamzink.springbootmysqldemo.resource;
 import com.github.adamzink.springbootmysqldemo.model.client.User;
 import com.github.adamzink.springbootmysqldemo.model.client.UserRequest;
 import com.github.adamzink.springbootmysqldemo.service.UserService;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 @Path("/users")
+@Api(value = "User", description = "Resource for getting and modifying Users")
 @Component
 public class UserResource {
 
