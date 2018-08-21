@@ -31,7 +31,12 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User save(final UserRequest userRequest) {
+    @ApiOperation(value = "Create a User",
+            response = User.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Bad request format")})
+    public User save(
+            @ApiParam(value = "User to be created", required = true) final UserRequest userRequest) {
         return userService.save(userRequest);
     }
 

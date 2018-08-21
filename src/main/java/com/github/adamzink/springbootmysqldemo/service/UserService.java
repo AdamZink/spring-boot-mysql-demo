@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.ws.rs.BadRequestException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -27,7 +28,7 @@ public class UserService {
     }
 
     public User save(final UserRequest userRequest) {
-        UserModel userModel = userConverter.requestToModel(userRequest);
+        UserModel userModel = getValidatedRequestToModel(userRequest);
 
         userModel.setAddTs(new Date());
 
@@ -46,6 +47,16 @@ public class UserService {
 
     public void delete(final Long id) {
         userRepository.deleteById(id);
+    }
+
+    private UserModel getValidatedRequestToModel(final UserRequest userRequest) {
+        UserModel model = userConverter.requestToModel(userRequest);
+
+        if (userRequest.getFirstName() == null || userRequest.getLastName() == null) {
+            throw new BadRequestException();
+        }
+
+        return model;
     }
 
 }
