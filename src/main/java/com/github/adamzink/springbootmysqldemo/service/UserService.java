@@ -52,7 +52,7 @@ public class UserService {
     private UserModel getValidatedRequestToModel(final UserRequest userRequest) {
         UserModel model = userConverter.requestToModel(userRequest);
 
-        if (userRequest.getFirstName() == null || userRequest.getLastName() == null) {
+        if (model.getFirstName() == null || model.getLastName() == null) {
             throw new BadRequestException();
         }
 
