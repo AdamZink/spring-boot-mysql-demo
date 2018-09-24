@@ -57,7 +57,12 @@ public class UserResource {
 
     @DELETE
     @Path("{id}")
-    public void delete(@PathParam("id") final Long id) {
+    @ApiOperation(value = "Delete a User")
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "User deleted successfully"),
+            @ApiResponse(code = 404, message = "User not found")})
+    public void delete(
+            @ApiParam(value = "User id to delete", required = true) @PathParam("id") final Long id) {
         userService.delete(id);
     }
 

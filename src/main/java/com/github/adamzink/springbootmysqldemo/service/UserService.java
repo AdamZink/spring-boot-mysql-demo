@@ -48,6 +48,7 @@ public class UserService {
     }
 
     public void delete(final Long id) {
+        userRepository.findById(id).orElseThrow(NotFoundException::new);
         userRepository.deleteById(id);
     }
 
