@@ -44,7 +44,14 @@ public class UserResource {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User update(@PathParam("id") final Long id, final UserRequest userRequest) {
+    @ApiOperation(value = "Update a User",
+            response = User.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Bad request format"),
+            @ApiResponse(code = 404, message = "User not found")})
+    public User update(
+            @ApiParam(value = "User id to update", required = true) @PathParam("id") final Long id,
+            @ApiParam(value = "User details to be updated", required = true) final UserRequest userRequest) {
         return userService.update(id, userRequest);
     }
 

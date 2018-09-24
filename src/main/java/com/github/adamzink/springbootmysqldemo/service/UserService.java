@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.NotFoundException;
 import java.util.Collection;
 import java.util.Date;
 
@@ -36,9 +37,10 @@ public class UserService {
     }
 
     public User update(final Long id, final UserRequest userRequest) {
-        UserModel fromRequest = userConverter.requestToModel(userRequest);
+        UserModel toSave = userRepository.findById(id).orElseThrow(NotFoundException::new);
 
-        UserModel toSave = userRepository.getOne(id);
+        UserModel fromRequest = getValidatedRequestToModel(userRequest);
+
         toSave.setFirstName(fromRequest.getFirstName());
         toSave.setLastName(fromRequest.getLastName());
 
