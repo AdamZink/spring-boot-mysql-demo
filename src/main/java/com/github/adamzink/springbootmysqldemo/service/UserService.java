@@ -31,7 +31,7 @@ public class UserService {
     public User save(final UserRequest userRequest) {
         UserModel userModel = getValidatedRequestToModel(userRequest);
 
-        userModel.setAddTs(new Date());
+        userModel.setAddTimestamp(new Date());
 
         return userConverter.modelToResponse(userRepository.save(userModel));
     }

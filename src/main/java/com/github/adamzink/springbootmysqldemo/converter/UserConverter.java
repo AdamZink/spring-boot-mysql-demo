@@ -25,7 +25,7 @@ public class UserConverter implements ModelConverter<UserRequest, UserModel, Use
         response.setId(model.getId());
         response.setFirstName(model.getFirstName());
         response.setLastName(model.getLastName());
-        response.setAddDate(new SimpleDateFormat("MMM d, yyyy").format(model.getAddTs()));
+        response.setAddDate(new SimpleDateFormat("MMM d, yyyy").format(model.getAddTimestamp()));
         return response;
     }
 

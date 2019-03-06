@@ -18,7 +18,7 @@ public class UserModel {
     private String lastName;
 
     @Column(name="ADD_TS")
-    private Date addTs;
+    private Date addTimestamp;
 
     public UserModel() {
     }
@@ -47,12 +47,12 @@ public class UserModel {
         this.lastName = lastName;
     }
 
-    public Date getAddTs() {
-        return addTs;
+    public Date getAddTimestamp() {
+        return addTimestamp;
     }
 
-    public void setAddTs(Date addTs) {
-        this.addTs = addTs;
+    public void setAddTimestamp(Date addTimestamp) {
+        this.addTimestamp = addTimestamp;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class UserModel {
         if (id != null ? !id.equals(userModel.id) : userModel.id != null) return false;
         if (firstName != null ? !firstName.equals(userModel.firstName) : userModel.firstName != null) return false;
         if (lastName != null ? !lastName.equals(userModel.lastName) : userModel.lastName != null) return false;
-        return addTs != null ? addTs.equals(userModel.addTs) : userModel.addTs == null;
+        return addTimestamp != null ? addTimestamp.equals(userModel.addTimestamp) : userModel.addTimestamp == null;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class UserModel {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (addTs != null ? addTs.hashCode() : 0);
+        result = 31 * result + (addTimestamp != null ? addTimestamp.hashCode() : 0);
         return result;
     }
 }
