@@ -8,16 +8,16 @@ import java.util.Date;
 public class UserModel {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column
+    @Column(name="ID")
     private Long id;
 
-    @Column
+    @Column(name="FIRST_NAME")
     private String firstName;
 
-    @Column
+    @Column(name="LAST_NAME")
     private String lastName;
 
-    @Column
+    @Column(name="ADD_TS")
     private Date addTs;
 
     public UserModel() {
