@@ -80,6 +80,7 @@
 			<plugin>
 				<groupId>com.github.kongchen</groupId>
 				<artifactId>swagger-maven-plugin</artifactId>
+				<version>3.1.8</version>
 				<configuration>
 					<apiSources>
 						<apiSource>
@@ -89,6 +90,7 @@
 							<basePath>/api</basePath>
 							<swaggerDirectory>${project.build.directory}/classes/swagger</swaggerDirectory>
 							<swaggerFileName>swagger</swaggerFileName>
+							<outputFormats>json</outputFormats>
 							<info>
 								<title>Spring Boot MySQL Demo</title>
 								<version>1.0</version>
